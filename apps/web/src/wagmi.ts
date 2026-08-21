@@ -28,6 +28,6 @@ export const xlayerTestnet = defineChain({
 export const wagmiConfig = getDefaultConfig({
   appName: 'Luma',
   projectId: '21fef48091f12692cad574a6f7753643', // Public WalletConnect project ID for Luma
-  chains: [xlayerTestnet, xlayerMainnet],
+  chains: [xlayerMainnet, xlayerTestnet],
   ssr: false,
 });
