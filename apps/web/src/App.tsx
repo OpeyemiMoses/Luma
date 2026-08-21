@@ -1765,8 +1765,8 @@ export const App: React.FC = () => {
               </div>
 
               {/* Network Filter Bar */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '1.5rem 0 1rem 0' }}>
-                <div style={{ display: 'flex', gap: '0.5rem', background: '#f1f5f9', padding: '0.25rem', borderRadius: '10px', border: '1px solid var(--border-subtle)' }}>
+              <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', margin: '1.5rem 0 1rem 0' }}>
+                <div style={{ display: 'flex', gap: '0.5rem', background: '#f1f5f9', padding: '0.25rem', borderRadius: '10px', border: '1px solid var(--border-subtle)', flexWrap: 'wrap' }}>
                   {(['ALL', 'TESTNET', 'MAINNET'] as const).map((filter) => (
                     <button
                       key={filter}
@@ -1789,51 +1789,6 @@ export const App: React.FC = () => {
                       {filter === 'MAINNET' && 'X Layer Mainnet (Production)'}
                     </button>
                   ))}
-                </div>
-
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  <a
-                    href="https://www.oklink.com/xlayer-test"
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      padding: '0.45rem 0.85rem',
-                      background: '#ffffff',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '8px',
-                      fontSize: '0.78rem',
-                      fontWeight: 600,
-                      color: '#2563eb',
-                      textDecoration: 'none',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.35rem'
-                    }}
-                  >
-                    <span>Testnet Explorer</span>
-                    <ExternalLink size={13} />
-                  </a>
-                  <a
-                    href="https://www.oklink.com/xlayer"
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      padding: '0.45rem 0.85rem',
-                      background: '#ffffff',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '8px',
-                      fontSize: '0.78rem',
-                      fontWeight: 600,
-                      color: '#059669',
-                      textDecoration: 'none',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.35rem'
-                    }}
-                  >
-                    <span>Mainnet Explorer</span>
-                    <ExternalLink size={13} />
-                  </a>
                 </div>
               </div>
 
