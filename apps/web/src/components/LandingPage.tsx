@@ -334,7 +334,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         <div className="luma-hero-main-bounds">
 
           {/* Hero Row: Left Authentic Headline & Right 6 Frosted Floating Cards */}
-          <div className="luma-hero-content-grid" style={{ marginTop: '2.5rem' }}>
+          <div className="luma-hero-content-grid">
             
             {/* Left Column: Authentic Luma Copy */}
             <div className="luma-hero-left-col luma-aura-reveal luma-delay-1">

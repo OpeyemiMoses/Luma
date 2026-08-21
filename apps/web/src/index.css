@@ -293,6 +293,29 @@
   }
 }
 
+/* Responsive App Content Grids */
+.cosmic-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.cosmic-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.explorer-address-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.explorer-address-grid.single-col {
+  grid-template-columns: 1fr;
+}
+
 .stat-glow-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -794,7 +817,7 @@
   gap: 2.5rem;
   align-items: center;
   margin: 0;
-  padding-top: 7rem; /* push content below the fixed nav (nav ~60px + 1.25rem top + buffer) */
+  padding-top: 8.5rem; /* ample clearance below the floating fixed nav on desktop */
   padding-bottom: 3rem;
 }
 
@@ -807,16 +830,17 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  padding: 0.35rem 0.95rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  padding: 0.42rem 1.1rem;
   border-radius: 9999px;
-  font-size: 0.74rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  color: #475569;
+  color: #334155;
   margin-bottom: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
 }
 
 .luma-pill-gold-dot {
@@ -2750,7 +2774,7 @@
   .luma-hero-content-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
-    padding-top: 6rem;
+    padding-top: 8.5rem;
   }
   .luma-two-column-engine-grid,
   .luma-sentinel-banner-card {
@@ -2786,7 +2810,8 @@
     position: sticky;
     top: 0;
     z-index: 40;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
   .sidebar-menu-title {
     display: none;
@@ -2812,14 +2837,38 @@
     display: none;
   }
   .cosmic-content {
-    padding: 1.25rem 1rem 3.5rem 1rem;
+    padding: 0.75rem 1rem 3.5rem 1rem;
   }
 
-  /* Grid adaptations */
+  /* In-App Topbar on Mobile - clean, transparent, no double background */
+  .cosmic-topbar {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: none !important;
+    position: static !important;
+    padding: 0.75rem 1rem 0.25rem 1rem !important;
+    box-shadow: none !important;
+  }
+
+  /* Grid adaptations - 1-column stack across all tabs on mobile */
   .cosmic-grid-2,
   .cosmic-grid-3,
-  .cosmic-grid-4 {
+  .cosmic-grid-4,
+  .explorer-address-grid {
     grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .cyber-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .explorer-address-grid .font-mono {
+    word-break: break-all;
+    font-size: 0.72rem !important;
   }
 
   /* Docs Layout */
@@ -2847,15 +2896,14 @@
 }
 
 @media (max-width: 640px) {
-  /* Landing Navigation — keep fixed, just ensure content below has enough top padding */
+  /* Landing Navigation — fixed at top, clean translucent capsule */
   .luma-hero-top-nav {
     padding: 0.65rem 0.85rem;
     flex-wrap: wrap;
     gap: 0.5rem;
-    /* keep fixed — no background change */
   }
   .luma-hero-content-grid {
-    padding-top: 2rem; /* sticky nav is in flow so only small gap needed */
+    padding-top: 10rem !important; /* plenty of clearance below the 2-row wrapped mobile navbar */
   }
   .luma-nav-brand-title {
     font-size: 1.05rem;
@@ -2966,7 +3014,7 @@
 
   /* In-App Topbar */
   .cosmic-topbar {
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 0.75rem;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
@@ -2995,11 +3043,11 @@
     padding: 0.35rem 0.75rem;
   }
   .luma-hero-content-grid {
-    padding-top: 6rem;
+    padding-top: 10.5rem !important;
     gap: 2rem;
   }
   .cosmic-content {
-    padding: 0.85rem 0.65rem 3rem 0.65rem;
+    padding: 0.75rem 0.5rem 3rem 0.5rem;
   }
   .cosmic-wallet-btn {
     padding: 0.4rem 0.85rem !important;

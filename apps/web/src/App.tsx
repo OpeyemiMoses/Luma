@@ -1280,7 +1280,7 @@ export const App: React.FC = () => {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '1.5rem', marginTop: '1.5rem' }}>
+              <div className="cosmic-grid-2" style={{ marginTop: '1.5rem' }}>
                 
                 {/* Left: Your Position */}
                 <div className="cyber-card" style={{ gap: '1.25rem' }}>
@@ -1562,7 +1562,7 @@ export const App: React.FC = () => {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
+              <div className="cosmic-grid-2" style={{ marginTop: '1.5rem' }}>
                 
                 <div className="cyber-card" style={{ gap: '1rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -1644,7 +1644,7 @@ export const App: React.FC = () => {
                   Select Onchain Risk Envelope
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+                <div className="cosmic-grid-3">
                   {(['Conservative', 'Balanced', 'Aggressive'] as const).map((pName) => (
                     <button
                       key={pName}
@@ -1869,7 +1869,7 @@ export const App: React.FC = () => {
                     </div>
 
                     {/* Address Boxes for Testnet & Mainnet */}
-                    <div style={{ display: 'grid', gridTemplateColumns: explorerFilter === 'ALL' ? '1fr 1fr' : '1fr', gap: '1rem', marginTop: '0.25rem' }}>
+                    <div className={`explorer-address-grid ${explorerFilter === 'ALL' ? '' : 'single-col'}`}>
                       
                       {/* X Layer Testnet Box */}
                       {(explorerFilter === 'ALL' || explorerFilter === 'TESTNET') && (
@@ -2030,7 +2030,7 @@ export const App: React.FC = () => {
               </div>
 
               {/* 2-Column Grid: Pairing Methods vs Alert Channels */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: '1.5rem', marginTop: '1.5rem' }}>
+              <div className="cosmic-grid-2" style={{ marginTop: '1.5rem' }}>
                 
                 {/* Left Column: Pairing & Authentication (if unbound) vs Active Sentinel Status (if bound) */}
                 <div className="cyber-card" style={{ gap: '1.25rem' }}>
