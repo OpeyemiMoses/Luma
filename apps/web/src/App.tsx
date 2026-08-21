@@ -90,13 +90,13 @@ export const App: React.FC = () => {
   // Native Wagmi token balance hooks
   const { data: usdtBalanceData } = useBalance({
     address: wagmiAddress,
-    token: (currentNetwork.contracts.usdt || '0x9e29b3aada05bf2d2c827af80bd28dc0b9b4fb0c') as `0x${string}`,
+    token: (currentNetwork.contracts.usdt || '0x779ded0c9e1022225f8e0630b35a9b54be713736') as `0x${string}`,
     query: { refetchInterval: 2500 }
   });
 
   const { data: usdgBalanceData } = useBalance({
     address: wagmiAddress,
-    token: (currentNetwork.contracts.usdg || '0xa78e2baabaf5c4f36b7fc394725deb68d332eec1') as `0x${string}`,
+    token: (currentNetwork.contracts.usdg || '0x4ae46a509f6b1d9056937ba4500cb143933d2dc8') as `0x${string}`,
     query: { refetchInterval: 2500 }
   });
 
@@ -108,7 +108,7 @@ export const App: React.FC = () => {
   const [selectedDepositToken, setSelectedDepositToken] = useState<'USDG' | 'USDT0'>('USDT0');
   const [selectedWithdrawToken, setSelectedWithdrawToken] = useState<'USDG' | 'USDT0'>('USDG');
   const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
-  const [explorerFilter, setExplorerFilter] = useState<'ALL' | 'TESTNET' | 'MAINNET'>('ALL');
+  const [explorerFilter, setExplorerFilter] = useState<'ALL' | 'TESTNET' | 'MAINNET'>('MAINNET');
   
   // Telegram Sentinel state (starts unbound or auto-synced from real Telegram bot)
   const [telegramHandle, setTelegramHandle] = useState<string>('');
@@ -423,32 +423,8 @@ export const App: React.FC = () => {
           vaultContract.getStrategyHoldings().catch(() => [0n, 0n, 0n])
         ]);
 
-        // Global TVL = totalAssets() — actual USD value deposited by ALL users
+        // Global TVL = totalAssets() — actual USD value deposited by ALL users on active network
         let globalDepositedUsd = parseFloat(ethers.formatUnits(totalAssetsWei, 6));
-
-        // If the active vault has 0 total assets (e.g. mainnet before user deposits),
-        // fallback to testnet vault data so the UI remains populated and demonstrative
-        if (globalDepositedUsd === 0) {
-          try {
-            const fbProv = new ethers.JsonRpcProvider('https://testrpc.xlayer.tech');
-            const fbVault = new ethers.Contract('0x792902644680070E5e6FA24aC7edD2f5240B1FB1', [
-              'function totalShares() view returns (uint256)',
-              'function totalAssets() view returns (uint256)',
-              'function getStrategyHoldings() view returns (uint256, uint256, uint256)'
-            ], fbProv);
-            const [fbShares, fbAssets, fbHold] = await Promise.all([
-              fbVault.totalShares().catch(() => 0n),
-              fbVault.totalAssets().catch(() => 0n),
-              fbVault.getStrategyHoldings().catch(() => [0n, 0n, 0n])
-            ]);
-            if (fbAssets > 0n) {
-              totalSharesWei = fbShares;
-              totalAssetsWei = fbAssets;
-              holdings = fbHold;
-              globalDepositedUsd = parseFloat(ethers.formatUnits(fbAssets, 6));
-            }
-          } catch {}
-        }
 
         let userVal = 0;
         if (wagmiAddress) {
@@ -2260,7 +2236,9 @@ export const App: React.FC = () => {
             <span>© 2026 Luma • 100% Non-Custodial RWA Strategy Vault on X Layer</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-            <a href={`${currentNetwork.blockExplorerUrl}/address/${currentNetwork.contracts.lumaVault}`} target="_blank" rel="noreferrer">0x7929...1FB1 (LumaVault) ↗</a>
+            <a href={`${currentNetwork.blockExplorerUrl}/address/${currentNetwork.contracts.lumaVault}`} target="_blank" rel="noreferrer">
+              {currentNetwork.contracts.lumaVault ? `${currentNetwork.contracts.lumaVault.slice(0, 6)}...${currentNetwork.contracts.lumaVault.slice(-4)} (LumaVault) ↗` : 'LumaVault ↗'}
+            </a>
             <a href="https://t.me/LumaFinanceBot" target="_blank" rel="noreferrer">Telegram Sentinel ↗</a>
             <a href="https://docs.xlayer.tech" target="_blank" rel="noreferrer">OKX X Layer ↗</a>
           </div>
