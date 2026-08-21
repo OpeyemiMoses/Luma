@@ -5,7 +5,7 @@
   "description": "AI-Managed RWA Strategy Vault on X Layer (USDG + PT-USDG)",
   "scripts": {
     "build": "npm --prefix apps/web run build",
-    "start": "serve apps/web/dist -s -l ${PORT:-3000}",
+    "start": "serve apps/web/dist -s -l ${PORT:-3000} --no-clipboard",
     "test": "vitest run",
     "test:contracts": "vitest run tests/unit/contracts.test.ts",
     "test:risk": "vitest run tests/unit/risk-engine.test.ts",
