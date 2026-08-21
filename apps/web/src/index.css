@@ -287,6 +287,12 @@
   }
 }
 
+@media (max-width: 640px) {
+  .five-stat-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .stat-glow-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -2841,29 +2847,15 @@
 }
 
 @media (max-width: 640px) {
-  /* Landing Navigation: switch to sticky so it scrolls with page and doesn't
-     overlap content. Height is predictable and content can start below it. */
+  /* Landing Navigation — keep fixed, just ensure content below has enough top padding */
   .luma-hero-top-nav {
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0.65rem 1rem;
+    padding: 0.65rem 0.85rem;
     flex-wrap: wrap;
     gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    z-index: 1000;
-    box-sizing: border-box;
+    /* keep fixed — no background change */
   }
   .luma-hero-content-grid {
-    padding-top: 2rem; /* no fixed nav offset needed now — nav is sticky */
+    padding-top: 2rem; /* sticky nav is in flow so only small gap needed */
   }
   .luma-nav-brand-title {
     font-size: 1.05rem;
@@ -2878,7 +2870,7 @@
     padding: 0.3rem 0.5rem;
     gap: 0.25rem;
     scrollbar-width: none;
-    background: rgba(15, 23, 42, 0.07);
+    background: rgba(0, 0, 0, 0.45);
     border-radius: 9999px;
   }
   .luma-capsule-navbar::-webkit-scrollbar {
@@ -2888,11 +2880,11 @@
     font-size: 0.72rem;
     padding: 0.35rem 0.65rem;
     flex-shrink: 0;
-    color: #0f172a;
+    color: #f8fafc;
   }
   .luma-capsule-item.active {
-    background: #ffffff;
-    color: #0f172a;
+    background: rgba(255,255,255,0.25);
+    color: #ffffff;
   }
   .luma-nav-docs-btn {
     padding: 0.4rem 0.65rem;
@@ -3002,13 +2994,8 @@
     font-size: 0.72rem;
     padding: 0.35rem 0.75rem;
   }
-  /* On smallest screens, landscape stage has no internal top padding
-     since the sticky nav is in normal document flow above it */
-  .luma-hero-sunset-landscape-stage {
-    padding: 0 1rem 0 1rem;
-  }
   .luma-hero-content-grid {
-    padding-top: 1.5rem;
+    padding-top: 6rem;
     gap: 2rem;
   }
   .cosmic-content {
@@ -3019,6 +3006,3 @@
     font-size: 0.74rem !important;
   }
 }
-
-
-
