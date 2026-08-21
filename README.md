@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="apps/web/public/luma-logo.png" alt="Luma Finance Logo" width="140" style="border-radius: 24px; margin-bottom: 12px;" />
+
 # 🌅 LUMA FINANCE
 
 ### **Autonomous AI-Managed Real-World Asset (RWA) Strategy Vault & Telegram Sentinel on OKX X Layer**
