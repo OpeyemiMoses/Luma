@@ -1,41 +1,35 @@
 <div align="center">
 
-<img src="apps/web/public/luma-logo.png" alt="Luma Finance Logo" width="140" style="border-radius: 24px; margin-bottom: 12px;" />
+<img src="apps/web/public/luma-logo.png" alt="Luma Finance Logo" width="130" style="border-radius: 20px; margin-bottom: 16px;" />
 
-# 🌅 LUMA FINANCE
+# Luma Finance
 
-### **Autonomous AI-Managed Real-World Asset (RWA) Strategy Vault & Telegram Sentinel on OKX X Layer**
+### Autonomous AI-Managed Real-World Asset (RWA) Strategy Vault & Telegram Sentinel on OKX X Layer
 
-[![X Layer Mainnet](https://img.shields.io/badge/Network-OKX%20X%20Layer%20Mainnet%20(196)-0284c7?style=for-the-badge&logo=ethereum)](https://www.oklink.com/xlayer)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/badge/Build-Passing-emerald?style=for-the-badge)](https://github.com/)
-[![Telegram Bot](https://img.shields.io/badge/Sentinel-@LumaFinanceBot-229ED9?style=for-the-badge&logo=telegram)](https://t.me/LumaFinanceBot)
-[![Smart Contracts](https://img.shields.io/badge/Solidity-0.8.20-363636?style=for-the-badge&logo=solidity)](https://soliditylang.org/)
-
-[**Live Web App**](http://localhost:5173/) • [**Technical Documentation**](http://localhost:5173/) • [**Telegram Bot**](https://t.me/LumaFinanceBot) • [**Smart Contracts**](https://www.oklink.com/xlayer/address/0xaa1ca8CF1E50f47815f6720863D8F83ecFAB2f2E)
+[Live Web App](http://localhost:5173/) • [Technical Documentation](http://localhost:5173/) • [Telegram Bot](https://t.me/LumaFinanceBot) • [Smart Contracts](https://www.oklink.com/xlayer/address/0xaa1ca8CF1E50f47815f6720863D8F83ecFAB2f2E)
 
 </div>
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 
-- [Overview](#-overview)
-- [Key Features](#-key-features)
-- [Architecture & Mechanics](#-architecture--mechanics)
-- [Dual RWA Yield Engine](#-dual-rwa-yield-engine)
-- [Verified Smart Contracts](#-verified-smart-contracts)
-- [Telegram Sentinel Telemetry](#-telegram-sentinel-telemetry)
-- [Security & Mathematical Invariants](#-security--mathematical-invariants)
-- [Repository Structure](#-repository-structure)
-- [Quickstart & Local Development](#-quickstart--local-development)
-- [Deployment Guide](#-deployment-guide)
-- [Contributing & Community](#-contributing--community)
-- [License](#-license)
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Architecture & Mechanics](#architecture--mechanics)
+- [Dual RWA Yield Engine](#dual-rwa-yield-engine)
+- [Verified Smart Contracts](#verified-smart-contracts)
+- [Telegram Sentinel Telemetry](#telegram-sentinel-telemetry)
+- [Security & Mathematical Invariants](#security--mathematical-invariants)
+- [Repository Structure](#repository-structure)
+- [Quickstart & Local Development](#quickstart--local-development)
+- [Deployment Guide](#deployment-guide)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## 🌟 Overview
+## Overview
 
 **Luma Finance** is an institutional-grade, non-custodial decentralized finance protocol built on **OKX X Layer** (Mainnet Chain ID: `196`, Testnet Chain ID: `1952`).
 
@@ -47,18 +41,18 @@ An autonomous **AI Strategy Engine** continuously models market risk and Sharpe 
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-- 🏛️ **Dual Real-World Asset (RWA) Engine**: Combines US Treasury yield via Paxos USDG and fixed discount yield via Pendle PT-USDG.
-- 🤖 **Autonomous AI Rebalancing**: Algorithmic decision proposals with onchain validation and full Zod schema validation.
-- 🛡️ **Mathematical Onchain Policy Guardrails**: Hard limits (Max 40% PT ceiling, 1.5% max slippage floor, non-custodial constraints).
-- 📡 **Luma Sentinel Telegram Bot (`@LumaFinanceBot`)**: Real-time push telemetry for deposits, withdrawals, rebalances, and APY shifts.
-- 📜 **Cryptographic Audit Trail (`DecisionRegistry.sol`)**: Every evaluation, rationale, Sharpe ratio, and tx hash is recorded immutably onchain.
-- 📱 **100% Mobile Responsive**: Built with responsive layouts, touch-friendly UI, and smooth performance on mobile and desktop.
+- **Dual Real-World Asset (RWA) Engine**: Combines US Treasury yield via Paxos USDG and fixed discount yield via Pendle PT-USDG.
+- **Autonomous AI Rebalancing**: Algorithmic decision proposals with onchain validation and full Zod schema validation.
+- **Mathematical Onchain Policy Guardrails**: Hard limits (Max 40% PT ceiling, 1.5% max slippage floor, non-custodial constraints).
+- **Luma Sentinel Telegram Bot (`@LumaFinanceBot`)**: Real-time push telemetry for deposits, withdrawals, rebalances, and APY shifts.
+- **Cryptographic Audit Trail (`DecisionRegistry.sol`)**: Every evaluation, rationale, Sharpe ratio, and tx hash is recorded immutably onchain.
+- **100% Mobile Responsive**: Built with responsive layouts, touch-friendly UI, and smooth performance on mobile and desktop.
 
 ---
 
-## 🏛️ Architecture & Mechanics
+## Architecture & Mechanics
 
 Luma Finance operates under a strict principle:
 > **The user defines the boundaries. The AI makes decisions inside those boundaries. The smart contract enforces the boundaries. X Layer executes the action.**
@@ -91,7 +85,7 @@ Luma Finance operates under a strict principle:
 
 ---
 
-## 💰 Dual RWA Yield Engine
+## Dual RWA Yield Engine
 
 | Asset | Underlying Collateral | Mechanism | Target Yield | Risk Level |
 | :--- | :--- | :--- | :--- | :--- |
@@ -101,7 +95,7 @@ Luma Finance operates under a strict principle:
 
 ---
 
-## 🔗 Verified Smart Contracts
+## Verified Smart Contracts
 
 All contracts are deployed and verified on **OKX X Layer Mainnet** (`Chain ID: 196`):
 
@@ -116,7 +110,7 @@ All contracts are deployed and verified on **OKX X Layer Mainnet** (`Chain ID: 1
 
 ---
 
-## 🤖 Telegram Sentinel Telemetry
+## Telegram Sentinel Telemetry
 
 Interact with **`@LumaFinanceBot`** in real time:
 
@@ -128,7 +122,7 @@ Interact with **`@LumaFinanceBot`** in real time:
 
 ---
 
-## 🛡️ Security & Mathematical Invariants
+## Security & Mathematical Invariants
 
 1. **Non-Custodial Guarantee**: User funds can never be withdrawn to any external address other than the depositors themselves.
 2. **Hardcoded PT Ceiling**: The vault contract rejects any rebalance that allocates more than the configured PT ceiling (default 40.00%).
@@ -137,7 +131,7 @@ Interact with **`@LumaFinanceBot`** in real time:
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 luma-finance/
@@ -169,13 +163,13 @@ luma-finance/
 
 ---
 
-## 🚀 Quickstart & Local Development
+## Quickstart & Local Development
 
 ### 1. Clone & Install Dependencies
 
 ```bash
-git clone https://github.com/<YOUR_GITHUB_USERNAME>/luma-finance.git
-cd luma-finance
+git clone https://github.com/OpeyemiMoses/Luma.git
+cd Luma
 npm install
 ```
 
@@ -208,12 +202,12 @@ npm test
 
 ---
 
-## 🌐 Deployment Guide
+## Deployment Guide
 
 ### Deploying Frontend to Vercel
 
 1. Push your repository to GitHub.
-2. Import the repository into **[Vercel](https://vercel.com)**.
+2. Import the repository into [Vercel](https://vercel.com).
 3. Configure the build settings:
    - **Framework Preset**: `Vite`
    - **Root Directory**: `apps/web`
@@ -223,7 +217,7 @@ npm test
 
 ---
 
-## 🤝 Contributing & Community
+## Contributing
 
 Contributions are welcome! Please read:
 - [Contributing Guide](CONTRIBUTING.md)
@@ -232,6 +226,6 @@ Contributions are welcome! Please read:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
