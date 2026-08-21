@@ -323,6 +323,9 @@ export const App: React.FC = () => {
     isPaused: false
   });
 
+  // Global vault TVL — total USD deposited by ALL users, no wallet required
+  const [globalTotalDeposited, setGlobalTotalDeposited] = useState<number>(0);
+
   const [risk, setRisk] = useState<RiskMetrics>({
     liquidityScore: 95,
     priceStabilityScore: 98,
@@ -414,10 +417,14 @@ export const App: React.FC = () => {
           prov
         );
 
-        const [totalWei, holdings] = await Promise.all([
+        const [totalSharesWei, totalAssetsWei, holdings] = await Promise.all([
           vaultContract.totalShares().catch(() => 0n),
+          vaultContract.totalAssets().catch(() => 0n),
           vaultContract.getStrategyHoldings().catch(() => [0n, 0n, 0n])
         ]);
+
+        // Global TVL = totalAssets() — actual USD value deposited by ALL users
+        const globalDepositedUsd = parseFloat(ethers.formatUnits(totalAssetsWei, 6));
 
         let userVal = 0;
         if (wagmiAddress) {
@@ -451,11 +458,12 @@ export const App: React.FC = () => {
         const ptBps = totHold > 0 ? Math.round((ptBal / totHold) * 10000) : 4000;
 
         if (isMounted) {
+          setGlobalTotalDeposited(globalDepositedUsd);
           setPortfolio(prev => ({
             ...prev,
             portfolioValueUsd: wagmiAddress ? userVal : 0,
             userVaultShares: wagmiAddress ? userVal : 0,
-            totalVaultShares: parseFloat(ethers.formatUnits(totalWei, 6)),
+            totalVaultShares: parseFloat(ethers.formatUnits(totalSharesWei, 6)),
             usdgBalance: uBal,
             ptUsdgBalance: ptBal,
             usdgAllocationBps: usdgBps,
@@ -1117,16 +1125,16 @@ export const App: React.FC = () => {
               {/* 5 Top Stat Cards (100% Real Live Onchain State) */}
               <div className="five-stat-cards-grid">
                 
-                {/* 1. Vault Total TVL */}
+                {/* 1. Total Deposited — Global, visible to everyone, no wallet needed */}
                 <div className="stat-glow-card">
                   <div className="stat-icon-circle">
                     <Globe size={15} />
                   </div>
-                  <div className="stat-label-text">Vault Total TVL</div>
-                  <div className="stat-value-text" style={{ color: '#2563eb' }}>${portfolio.totalVaultShares.toFixed(2)}</div>
+                  <div className="stat-label-text">Total Deposited</div>
+                  <div className="stat-value-text" style={{ color: '#2563eb' }}>${globalTotalDeposited.toFixed(2)}</div>
                   <span className="stat-badge-trend trend-up">
                     <TrendingUp size={11} />
-                    <span>100% Backed</span>
+                    <span>Visible to All · 100% Backed</span>
                   </span>
                 </div>
 
