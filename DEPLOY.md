@@ -1,6 +1,9 @@
 # Railpack / Railway Deployment Guide for Luma Finance
 
-## Problem Fixed
+## Live App
+
+**[https://luma-fi.vercel.app/](https://luma-fi.vercel.app/)** — Deployed on Vercel from `main` branch.
+
 
 Railpack failed because:
 1. No `start` script was defined in root `package.json`

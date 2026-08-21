@@ -6,7 +6,7 @@
 
 ### Autonomous AI-Managed Real-World Asset (RWA) Strategy Vault & Telegram Sentinel on OKX X Layer
 
-[Live Web App](http://localhost:5173/) • [Technical Documentation](http://localhost:5173/) • [Telegram Bot](https://t.me/LumaFinanceBot) • [Smart Contracts](https://www.oklink.com/xlayer/address/0xaa1ca8CF1E50f47815f6720863D8F83ecFAB2f2E)
+[Live Web App](https://luma-fi.vercel.app/) • [Technical Documentation](https://luma-fi.vercel.app/) • [Telegram Bot](https://t.me/LumaFinanceBot) • [Smart Contracts](https://www.oklink.com/xlayer/address/0xaa1ca8CF1E50f47815f6720863D8F83ecFAB2f2E)
 
 </div>
 
@@ -204,15 +204,23 @@ npm test
 
 ## Deployment Guide
 
-### Deploying Frontend to Vercel
+### Live Deployment
 
-1. Push your repository to GitHub.
-2. Import the repository into [Vercel](https://vercel.com).
+The Luma Finance web app is live at:
+
+**[https://luma-fi.vercel.app/](https://luma-fi.vercel.app/)**
+
+Deployed on [Vercel](https://vercel.com) from the `main` branch of [github.com/OpeyemiMoses/Luma](https://github.com/OpeyemiMoses/Luma).
+
+### Deploy Your Own Instance
+
+1. Fork the repository on GitHub.
+2. Import the fork into [Vercel](https://vercel.com).
 3. Configure the build settings:
-   - **Framework Preset**: `Vite`
    - **Root Directory**: `apps/web`
    - **Build Command**: `npm run build`
    - **Output Directory**: `dist`
+   - **Install Command**: `npm install`
 4. Click **Deploy**.
 
 ---
