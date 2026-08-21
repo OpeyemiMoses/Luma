@@ -684,10 +684,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </div>
 
             <div className="luma-contracts-list-col" id="oklink-contracts">
-              <div className="luma-contracts-list-title">Verified Smart Contracts on OKLink:</div>
+              <div className="luma-contracts-list-title">Verified Smart Contracts on OKLink (Mainnet):</div>
               
               <a
-                href="https://www.oklink.com/xlayer-test/address/0x792902644680070E5e6FA24aC7edD2f5240B1FB1"
+                href="https://www.oklink.com/xlayer/address/0xaa1ca8CF1E50f47815f6720863D8F83ecFAB2f2E"
                 target="_blank"
                 rel="noreferrer"
                 className="luma-contract-row-item"
@@ -696,11 +696,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   <div className="luma-c-name">Luma Vault</div>
                   <div className="luma-c-role">ERC-4626 Strategy Vault</div>
                 </div>
-                <span className="font-mono luma-c-addr">0x7929...1FB1 ↗</span>
+                <span className="font-mono luma-c-addr">0xaa1c...2f2E ↗</span>
               </a>
 
               <a
-                href="https://www.oklink.com/xlayer-test/address/0x295848152B69f42b6186dcfE7FB86c7F2A97A653"
+                href="https://www.oklink.com/xlayer/address/0xc743883f03De9722050B7da6cd77F91128eD0562"
                 target="_blank"
                 rel="noreferrer"
                 className="luma-contract-row-item"
@@ -709,11 +709,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   <div className="luma-c-name">Policy Manager</div>
                   <div className="luma-c-role">Mathematical Safety Rules</div>
                 </div>
-                <span className="font-mono luma-c-addr">0x2958...A653 ↗</span>
+                <span className="font-mono luma-c-addr">0xc743...0562 ↗</span>
               </a>
 
               <a
-                href="https://www.oklink.com/xlayer-test/address/0x876Ccc1F4efdfFa786bB5cf1E36d77cE07690dcf"
+                href="https://www.oklink.com/xlayer/address/0x9C2Ced10f2775369C9a17ebB1746199cd92399B6"
                 target="_blank"
                 rel="noreferrer"
                 className="luma-contract-row-item"
@@ -722,7 +722,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   <div className="luma-c-name">Execution Router</div>
                   <div className="luma-c-role">Dedicated Swap Execution</div>
                 </div>
-                <span className="font-mono luma-c-addr">0x876C...0dcf ↗</span>
+                <span className="font-mono luma-c-addr">0x9C2C...99B6 ↗</span>
               </a>
             </div>
           </div>
@@ -767,7 +767,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <div className="luma-footer-col-header">Resources & Docs</div>
               {onOpenDocs && <button onClick={onOpenDocs} className="luma-footer-link-btn">Technical Docs</button>}
               {onOpenHelp && <button onClick={onOpenHelp} className="luma-footer-link-btn">Help Centre & Guides</button>}
-              <a href="https://www.oklink.com/xlayer-test" target="_blank" rel="noreferrer" className="luma-footer-external-link">OKLink Explorer ↗</a>
+              <a href="https://www.oklink.com/xlayer" target="_blank" rel="noreferrer" className="luma-footer-external-link">OKLink Explorer ↗</a>
               <a href="https://t.me/LumaFinanceBot" target="_blank" rel="noreferrer" className="luma-footer-external-link">Telegram Sentinel ↗</a>
             </div>
 
