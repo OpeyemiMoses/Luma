@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build Outputs
+dist/
+build/
+out/
+.next/
+
+# Environment Variables (Protect Secrets & Private Keys)
+.env
+.env.local
+.env.*.local
+*.pem
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Hardhat & Foundry Artifacts
+cache/
+artifacts/
+typechain-types/
+
+# Telegram Local State
+data/telegram-bindings.json
+data/telegram-policies.json
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

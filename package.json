@@ -1,0 +1,53 @@
+{
+  "name": "luma-finance",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-Managed RWA Strategy Vault on X Layer (USDG + PT-USDG)",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "test:contracts": "vitest run tests/unit/contracts.test.ts",
+    "test:risk": "vitest run tests/unit/risk-engine.test.ts",
+    "test:ai": "vitest run tests/unit/ai-agent.test.ts",
+    "test:integration": "vitest run tests/integration/vault-rebalance-lifecycle.test.ts",
+    "test:fuzz": "vitest run tests/fuzz/invariant-fuzz.test.ts",
+    "test:failure": "vitest run tests/failure/fail-closed-scenarios.test.ts",
+    "start:indexer": "tsx services/indexer/src/index.ts",
+    "start:agent": "tsx apps/agent/src/index.ts",
+    "start:executor": "tsx services/executor/src/index.ts",
+    "start:bot": "tsx apps/telegram-bot/src/cli.ts",
+    "compile:contracts": "tsx scripts/compile.ts",
+    "deploy:testnet": "tsx scripts/deploy.ts --testnet",
+    "deploy:mainnet": "tsx scripts/deploy.ts",
+    "dev:web": "npm --prefix apps/web run dev",
+    "build:web": "npm --prefix apps/web run build"
+  },
+  "workspaces": [
+    "packages/*",
+    "services/*",
+    "apps/*"
+  ],
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "@rainbow-me/rainbowkit": "^2.2.11",
+    "@tanstack/react-query": "^5.101.4",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.2",
+    "grammy": "^1.45.1",
+    "viem": "^2.55.19",
+    "wagmi": "^2.19.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^20.14.9",
+    "solc": "^0.8.36",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

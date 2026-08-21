@@ -1,0 +1,15 @@
+{
+  "network": "X Layer Testnet (Chain ID: 1952)",
+  "chainId": 1952,
+  "deployedAt": "2026-08-20T22:49:46.104Z",
+  "deployer": "0xb4825ABd70312e52083DDB55D3a00c0c309a6C09",
+  "contracts": {
+    "PolicyManager": "0x295848152B69f42b6186dcfE7FB86c7F2A97A653",
+    "DecisionRegistry": "0x6daBB7eF8863D3D8528CBcC5365d69D93e359658",
+    "ExecutionRouter": "0x876Ccc1F4efdfFa786bB5cf1E36d77cE07690dcf",
+    "LumaVault": "0x792902644680070E5e6FA24aC7edD2f5240B1FB1",
+    "USDG": "0xa78e2baabaf5c4f36b7fc394725deb68d332eec1",
+    "PT_USDG": "0x9e29b3aada05bf2d2c827af80bd28dc0b9b4fb0c",
+    "PendleRouter": "0x888888888889758F76e7103c6CbF23ABbF58F946"
+  }
+}

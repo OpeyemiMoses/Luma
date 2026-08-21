@@ -1,0 +1,15 @@
+{
+  "network": "OKX X Layer Mainnet (Chain ID: 196)",
+  "chainId": 196,
+  "deployedAt": "2026-08-21T09:14:24.674Z",
+  "deployer": "0xb4825ABd70312e52083DDB55D3a00c0c309a6C09",
+  "contracts": {
+    "PolicyManager": "0xc743883f03De9722050B7da6cd77F91128eD0562",
+    "DecisionRegistry": "0xca196D22406951c5D14704E61271dF90b3666DbC",
+    "ExecutionRouter": "0x9C2Ced10f2775369C9a17ebB1746199cd92399B6",
+    "LumaVault": "0xaa1ca8CF1E50f47815f6720863D8F83ecFAB2f2E",
+    "USDG": "0x4ae46a509f6b1d9056937ba4500cb143933d2dc8",
+    "PT_USDG": "0x9a09a9e491db3dd8ada5b1b889991ac9ad5fd362",
+    "PendleRouter": "0x888888888889758F76e7103c6CbF23ABbF58F946"
+  }
+}
