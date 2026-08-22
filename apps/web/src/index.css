@@ -3109,27 +3109,221 @@
     font-size: 0.72rem !important;
   }
 
-  /* Docs Layout */
+  /* Docs Layout Mobile Fixes */
+  .luma-docs-root,
+  .luma-help-root {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  .luma-docs-header {
+    padding: 0.75rem 1rem !important;
+    flex-wrap: wrap !important;
+    gap: 0.65rem !important;
+  }
+
+  .luma-docs-header-left {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  .luma-docs-header-right {
+    width: 100% !important;
+    justify-content: space-between !important;
+    gap: 0.5rem !important;
+  }
+
+  .luma-docs-search-box {
+    flex: 1 !important;
+    max-width: none !important;
+  }
+
+  .luma-docs-search-box input {
+    width: 100% !important;
+  }
+
   .luma-docs-container {
-    flex-direction: column;
-    padding: 1rem;
+    flex-direction: column !important;
+    padding: 0.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
   }
+
   .luma-docs-sidebar {
-    width: 100%;
-    position: static;
-    border-right: none;
-    border-bottom: 1px solid #e2e8f0;
-    padding-bottom: 1rem;
-    margin-bottom: 1.5rem;
+    width: 100% !important;
+    position: static !important;
+    height: auto !important;
+    border-right: none !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding: 0.75rem !important;
+    margin-bottom: 1rem !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
   }
+
   .luma-docs-sidebar-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.35rem !important;
+    margin-bottom: 0.75rem !important;
   }
+
   .luma-docs-sidebar-title {
-    width: 100%;
-    margin-top: 0.5rem;
+    width: 100% !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .luma-docs-nav-link {
+    width: auto !important;
+    flex-grow: 1 !important;
+    padding: 0.45rem 0.75rem !important;
+    font-size: 0.76rem !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  .luma-docs-sidebar-footer {
+    display: none !important;
+  }
+
+  .luma-docs-content {
+    padding: 1.25rem 1rem !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    border-radius: 14px !important;
+  }
+
+  .luma-docs-article {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .luma-docs-article h1 {
+    font-size: 1.65rem !important;
+    word-break: break-word !important;
+  }
+
+  .luma-docs-article h2 {
+    font-size: 1.2rem !important;
+  }
+
+  .luma-docs-lead {
+    font-size: 0.92rem !important;
+  }
+
+  .luma-docs-grid-cards {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+  }
+
+  .luma-docs-diagram-box {
+    padding: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .luma-diagram-flow {
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+    width: 100% !important;
+  }
+
+  .luma-diagram-node {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0.75rem !important;
+  }
+
+  .luma-diagram-arrow {
+    transform: rotate(90deg) !important;
+    margin: 0.15rem 0 !important;
+    font-size: 1rem !important;
+  }
+
+  .luma-docs-code-block {
+    padding: 0.85rem 1rem !important;
+    font-size: 0.74rem !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+  }
+
+  .luma-docs-table-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    box-sizing: border-box !important;
+  }
+
+  .luma-docs-table {
+    min-width: 480px !important;
+    font-size: 0.75rem !important;
+  }
+
+  .luma-docs-contract-card {
+    padding: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .luma-docs-contract-top {
+    flex-direction: column !important;
+    gap: 0.4rem !important;
+  }
+
+  .luma-docs-contract-addr-row {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0.45rem 0.65rem !important;
+  }
+
+  .luma-docs-contract-addr-row .font-mono {
+    font-size: 0.72rem !important;
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  /* Help Centre Mobile Fixes */
+  .luma-help-hero {
+    padding: 2.5rem 1rem !important;
+  }
+
+  .luma-help-hero h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .luma-help-container {
+    padding: 1rem 0.5rem !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .luma-help-search-box {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .luma-steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
   }
 }
 

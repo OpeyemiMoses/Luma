@@ -490,7 +490,7 @@ Target PT Allocation = f(Maturity Discount, Pool Liquidity, Time to Expiry)`}
                 All Luma smart contracts are deployed and verified on OKLink for OKX X Layer Mainnet (Chain ID: 196) and Testnet (Chain ID: 1952).
               </p>
 
-              <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem' }}>
+              <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
                 <button
                   onClick={() => setContractNetwork('mainnet')}
                   style={{
@@ -549,7 +549,7 @@ Target PT Allocation = f(Maturity Discount, Pool Liquidity, Time to Expiry)`}
                     </div>
                     <p className="luma-docs-contract-desc">{c.description}</p>
                     <div className="luma-docs-contract-addr-row">
-                      <span className="font-mono">{c.address}</span>
+                      <span className="font-mono" style={{ wordBreak: 'break-all', fontSize: '0.76rem' }}>{c.address}</span>
                       <button
                         onClick={() => copyToClipboard(c.address, c.name)}
                         className="luma-docs-copy-btn"
