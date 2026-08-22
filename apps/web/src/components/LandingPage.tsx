@@ -84,7 +84,10 @@ export const SunsetLandscapeLayer: React.FC<{ opacity?: number; blur?: number; f
       zIndex: 1,
       opacity,
       filter: blur > 0 ? `blur(${blur}px)` : 'none',
-      transform: flipBottom ? 'scaleY(-1) scale(1.04)' : 'scale(1.04)'
+      transform: flipBottom ? 'scaleY(-1) scale(1.04) translateZ(0)' : 'scale(1.04) translateZ(0)',
+      willChange: 'opacity, transform',
+      WebkitBackfaceVisibility: 'hidden',
+      backfaceVisibility: 'hidden'
     }}
   >
     <svg
