@@ -30,7 +30,10 @@ import {
   Zap,
   Link2,
   Unlink,
-  Landmark
+  Landmark,
+  Menu,
+  X,
+  Home
 } from 'lucide-react';
 import { useAccount, useBalance, useWriteContract, useConfig } from 'wagmi';
 import { waitForTransactionReceipt } from 'wagmi/actions';
@@ -109,6 +112,7 @@ export const App: React.FC = () => {
   const [selectedWithdrawToken, setSelectedWithdrawToken] = useState<'USDG' | 'USDT0'>('USDG');
   const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
   const [explorerFilter, setExplorerFilter] = useState<'ALL' | 'TESTNET' | 'MAINNET'>('MAINNET');
+  const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
   
   // Telegram Sentinel state (starts unbound or auto-synced from real Telegram bot)
   const [telegramHandle, setTelegramHandle] = useState<string>('');
@@ -941,8 +945,142 @@ export const App: React.FC = () => {
   return (
     <div className="cosmic-app-wrapper">
       
-      {/* Left Sidebar with Blurred Sunset Background */}
-      <aside className="cosmic-sidebar">
+      {/* Mobile Top App Header Bar */}
+      <div className="inapp-mobile-nav-bar">
+        <div className="inapp-mobile-brand" onClick={() => { setViewMode('landing'); setMobileNavOpen(false); }}>
+          <LumaLogo size={24} variant="dark" />
+          <span style={{ fontSize: '1rem', fontWeight: 900, color: '#0f172a' }}>Luma</span>
+          <span className="inapp-mobile-active-tab-chip">
+            {activeTab === 'vault' && 'Vault'}
+            {activeTab === 'deposit' && 'Deposit'}
+            {activeTab === 'venues' && 'Venues'}
+            {activeTab === 'policy' && 'Policy'}
+            {activeTab === 'activity' && 'Stream'}
+            {activeTab === 'telegram' && 'Sentinel'}
+            {activeTab === 'explorer' && 'Explorer'}
+          </span>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+          <ConnectButton.Custom>
+            {({ account, openAccountModal, openConnectModal, mounted }) => {
+              if (!mounted || !account) {
+                return (
+                  <button onClick={openConnectModal} className="inapp-mobile-wallet-btn">
+                    Connect
+                  </button>
+                );
+              }
+              return (
+                <button onClick={openAccountModal} className="inapp-mobile-wallet-btn connected">
+                  {account.displayName}
+                </button>
+              );
+            }}
+          </ConnectButton.Custom>
+
+          <button
+            onClick={() => setMobileNavOpen(!mobileNavOpen)}
+            className="inapp-mobile-hamburger-btn"
+            aria-label="Toggle navigation menu"
+          >
+            {mobileNavOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer Overlay for In-App Tabs */}
+      {mobileNavOpen && (
+        <div className="inapp-mobile-drawer-overlay" onClick={() => setMobileNavOpen(false)}>
+          <div className="inapp-mobile-drawer-content" onClick={(e) => e.stopPropagation()}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.4rem 0.25rem 0.75rem 0.25rem', borderBottom: '1px solid #e2e8f0', marginBottom: '0.75rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Dashboard Menu</span>
+              <button onClick={() => setMobileNavOpen(false)} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: '#64748b', display: 'flex', alignItems: 'center' }}>
+                <X size={18} />
+              </button>
+            </div>
+
+            <div className="inapp-mobile-nav-list">
+              <button
+                onClick={() => { setActiveTab('vault'); setMobileNavOpen(false); }}
+                className={`inapp-mobile-nav-btn ${activeTab === 'vault' ? 'active' : ''}`}
+              >
+                <Boxes size={16} />
+                <span>Strategy Vault</span>
+              </button>
+              <button
+                onClick={() => { setActiveTab('deposit'); setMobileNavOpen(false); }}
+                className={`inapp-mobile-nav-btn ${activeTab === 'deposit' ? 'active' : ''}`}
+              >
+                <Wallet size={16} />
+                <span>Deposit & Withdraw</span>
+              </button>
+              <button
+                onClick={() => { setActiveTab('venues'); setMobileNavOpen(false); }}
+                className={`inapp-mobile-nav-btn ${activeTab === 'venues' ? 'active' : ''}`}
+              >
+                <Coins size={16} />
+                <span>RWA Yield Venues</span>
+              </button>
+              <button
+                onClick={() => { setActiveTab('policy'); setMobileNavOpen(false); }}
+                className={`inapp-mobile-nav-btn ${activeTab === 'policy' ? 'active' : ''}`}
+              >
+                <Sliders size={16} />
+                <span>Policy & Guardrails</span>
+              </button>
+              <button
+                onClick={() => { setActiveTab('activity'); setMobileNavOpen(false); }}
+                className={`inapp-mobile-nav-btn ${activeTab === 'activity' ? 'active' : ''}`}
+              >
+                <Activity size={16} />
+                <span>AI Decision Stream</span>
+              </button>
+              <button
+                onClick={() => { setActiveTab('telegram'); setMobileNavOpen(false); }}
+                className={`inapp-mobile-nav-btn ${activeTab === 'telegram' ? 'active' : ''}`}
+              >
+                <Send size={16} />
+                <span>Telegram Sentinel</span>
+              </button>
+              <button
+                onClick={() => { setActiveTab('explorer'); setMobileNavOpen(false); }}
+                className={`inapp-mobile-nav-btn ${activeTab === 'explorer' ? 'active' : ''}`}
+              >
+                <Globe size={16} />
+                <span>OKLink Explorer</span>
+              </button>
+
+              <div className="inapp-mobile-drawer-divider" />
+
+              <button
+                onClick={() => { setViewMode('help'); setMobileNavOpen(false); }}
+                className="inapp-mobile-nav-btn sub-link"
+              >
+                <HelpCircle size={16} />
+                <span>Help Centre & Guides</span>
+              </button>
+              <button
+                onClick={() => { setViewMode('docs'); setMobileNavOpen(false); }}
+                className="inapp-mobile-nav-btn sub-link"
+              >
+                <BookOpen size={16} />
+                <span>Technical Documentation</span>
+              </button>
+              <button
+                onClick={() => { setViewMode('landing'); setMobileNavOpen(false); }}
+                className="inapp-mobile-nav-btn sub-link"
+              >
+                <Home size={16} />
+                <span>Return to Landing Page</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Left Sidebar for Desktop */}
+      <aside className="cosmic-sidebar desktop-only-sidebar">
         {/* Softly Blurred Sunset Landscape Layer */}
         <SunsetLandscapeLayer opacity={0.35} blur={14} />
 

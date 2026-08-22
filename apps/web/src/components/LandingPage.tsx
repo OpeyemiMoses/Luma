@@ -28,7 +28,9 @@ import {
   Clock,
   Landmark,
   FileCheck2,
-  PieChart
+  PieChart,
+  Menu,
+  X
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -243,20 +245,20 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         }
       }
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <div className="luma-landing-root">
+    <div className="luma-complete-landing-page">
       
       {/* =========================================================================
-          TOP PART: Sunset Mountain Landscape Backdrop with Hero & Top Nav
+          TOP HERO SECTION: Sunset Mountain Landscape with Misty Bottom Fade
           ========================================================================= */}
       <section className="luma-hero-sunset-landscape-stage" id="home">
-        
-        {/* Soft Organic Sunset Atmospheric Backdrop Layer */}
+        {/* Real Live Cinematic Sunset Mountain Canvas */}
         <SunsetLandscapeLayer opacity={0.96} blur={6} />
         
         {/* Soft Organic Mist Feather Gradient Transitioning into White Center */}
@@ -264,7 +266,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
         {/* Fixed Floating Navigation Bar */}
         <header className="luma-hero-top-nav">
-          <div className="luma-nav-brand" onClick={() => scrollToSection('home', 'Home')}>
+          <div className="luma-nav-brand" onClick={() => { scrollToSection('home', 'Home'); setMobileMenuOpen(false); }}>
             <LumaLogo size={30} variant="light" />
             <span className="luma-nav-brand-title">Luma</span>
             <span className="luma-nav-network-tag font-mono" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
@@ -273,7 +275,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </span>
           </div>
 
-          <nav className="luma-capsule-navbar">
+          <nav className="luma-capsule-navbar desktop-capsule-nav">
             <button
               onClick={() => scrollToSection('home', 'Home')}
               className={`luma-capsule-item ${activeTab === 'Home' ? 'active' : ''}`}
@@ -312,7 +314,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </button>
           </nav>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', pointerEvents: 'auto' }}>
+          <div className="luma-nav-actions-desktop" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', pointerEvents: 'auto' }}>
             {onOpenDocs && (
               <button onClick={onOpenDocs} className="luma-nav-docs-btn" title="Open Technical Documentation">
                 Docs
@@ -328,7 +330,93 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <ArrowUpRight size={15} />
             </button>
           </div>
+
+          {/* Mobile Hamburger Button Group */}
+          <div className="luma-nav-mobile-toggle-group">
+            <button onClick={onEnterApp} className="luma-mobile-launch-sm-btn">
+              <span>Launch</span>
+              <ArrowUpRight size={13} />
+            </button>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="luma-hamburger-btn"
+              aria-label="Toggle mobile menu"
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </header>
+
+        {/* Mobile Dropdown Drawer */}
+        {mobileMenuOpen && (
+          <div className="luma-mobile-menu-drawer">
+            <div className="luma-mobile-menu-content">
+              <button
+                onClick={() => { scrollToSection('home', 'Home'); setMobileMenuOpen(false); }}
+                className={`luma-mobile-menu-item ${activeTab === 'Home' ? 'active' : ''}`}
+              >
+                <span>Home</span>
+              </button>
+              <button
+                onClick={() => { scrollToSection('rwa-vault', 'Strategy'); setMobileMenuOpen(false); }}
+                className={`luma-mobile-menu-item ${activeTab === 'Strategy' ? 'active' : ''}`}
+              >
+                <span>RWA Strategy Vault</span>
+              </button>
+              <button
+                onClick={() => { scrollToSection('treasury-yields', 'RWA'); setMobileMenuOpen(false); }}
+                className={`luma-mobile-menu-item ${activeTab === 'RWA' ? 'active' : ''}`}
+              >
+                <span>Treasury Yields (USDG + Pendle)</span>
+              </button>
+              <button
+                onClick={() => { scrollToSection('risk-engine', 'Guardrails'); setMobileMenuOpen(false); }}
+                className={`luma-mobile-menu-item ${activeTab === 'Guardrails' ? 'active' : ''}`}
+              >
+                <span>Risk Engine & Guardrails</span>
+              </button>
+              <button
+                onClick={() => { scrollToSection('sentinel', 'Sentinel'); setMobileMenuOpen(false); }}
+                className={`luma-mobile-menu-item ${activeTab === 'Sentinel' ? 'active' : ''}`}
+              >
+                <span>Telegram Sentinel Bot</span>
+              </button>
+              <button
+                onClick={() => { scrollToSection('oklink-contracts', 'OKLink'); setMobileMenuOpen(false); }}
+                className={`luma-mobile-menu-item ${activeTab === 'OKLink' ? 'active' : ''}`}
+              >
+                <span>OKLink Explorer (Mainnet)</span>
+              </button>
+
+              <div className="luma-mobile-menu-divider" />
+
+              {onOpenDocs && (
+                <button
+                  onClick={() => { onOpenDocs(); setMobileMenuOpen(false); }}
+                  className="luma-mobile-menu-item"
+                >
+                  <span>Technical Documentation</span>
+                </button>
+              )}
+              {onOpenHelp && (
+                <button
+                  onClick={() => { onOpenHelp(); setMobileMenuOpen(false); }}
+                  className="luma-mobile-menu-item"
+                >
+                  <span>Help Centre & Guides</span>
+                </button>
+              )}
+
+              <button
+                onClick={() => { onEnterApp(); setMobileMenuOpen(false); }}
+                className="luma-mobile-menu-cta-btn"
+              >
+                <span>Enter Strategy Vault</span>
+                <ArrowRight size={15} />
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Content Container */}
         <div className="luma-hero-main-bounds">
