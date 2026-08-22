@@ -103,8 +103,96 @@ export const App: React.FC = () => {
     query: { refetchInterval: 2500 }
   });
 
-  const [viewMode, setViewMode] = useState<'landing' | 'app' | 'docs' | 'help'>('landing');
-  const [activeTab, setActiveTab] = useState<SidebarTab>('vault');
+  // Helper to parse URL hash or localStorage for routing persistence
+  const getInitialRouting = (): { view: 'landing' | 'app' | 'docs' | 'help'; tab: SidebarTab } => {
+    try {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.startsWith('#/app') || hash.startsWith('#/dashboard') || hash.startsWith('#/vault')) {
+        const parts = hash.split('/');
+        const tabPart = parts[2] as SidebarTab;
+        const validTabs: SidebarTab[] = ['vault', 'deposit', 'venues', 'policy', 'activity', 'telegram', 'explorer'];
+        const tab = validTabs.includes(tabPart) ? tabPart : 'vault';
+        return { view: 'app', tab };
+      }
+      if (hash.startsWith('#/docs')) return { view: 'docs', tab: 'vault' };
+      if (hash.startsWith('#/help')) return { view: 'help', tab: 'vault' };
+
+      // Fallback to localStorage
+      const savedView = localStorage.getItem('luma_view_mode') as 'landing' | 'app' | 'docs' | 'help' | null;
+      const savedTab = localStorage.getItem('luma_active_tab') as SidebarTab | null;
+      if (savedView && ['landing', 'app', 'docs', 'help'].includes(savedView)) {
+        const validTabs: SidebarTab[] = ['vault', 'deposit', 'venues', 'policy', 'activity', 'telegram', 'explorer'];
+        const tab = savedTab && validTabs.includes(savedTab) ? savedTab : 'vault';
+        return { view: savedView, tab };
+      }
+    } catch {
+      // ignore
+    }
+    return { view: 'landing', tab: 'vault' };
+  };
+
+  const initialRoute = getInitialRouting();
+  const [viewMode, setViewModeState] = useState<'landing' | 'app' | 'docs' | 'help'>(initialRoute.view);
+  const [activeTab, setActiveTabState] = useState<SidebarTab>(initialRoute.tab);
+
+  // Sync state to URL hash and localStorage
+  const setViewMode = (mode: 'landing' | 'app' | 'docs' | 'help') => {
+    setViewModeState(mode);
+    try {
+      localStorage.setItem('luma_view_mode', mode);
+      if (mode === 'landing') {
+        window.history.replaceState(null, '', window.location.pathname);
+      } else if (mode === 'app') {
+        window.history.replaceState(null, '', `#/app/${activeTab}`);
+      } else if (mode === 'docs') {
+        window.history.replaceState(null, '', '#/docs');
+      } else if (mode === 'help') {
+        window.history.replaceState(null, '', '#/help');
+      }
+    } catch {}
+  };
+
+  const setActiveTab = (tab: SidebarTab) => {
+    setActiveTabState(tab);
+    try {
+      localStorage.setItem('luma_active_tab', tab);
+      if (viewMode === 'app') {
+        window.history.replaceState(null, '', `#/app/${tab}`);
+      }
+    } catch {}
+  };
+
+  // Sync on browser back/forward and hash changes
+  useEffect(() => {
+    const handleHashChange = () => {
+      const route = getInitialRouting();
+      setViewModeState(route.view);
+      setActiveTabState(route.tab);
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handleHashChange);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('popstate', handleHashChange);
+    };
+  }, []);
+
+  // Update hash when activeTab or viewMode changes
+  useEffect(() => {
+    try {
+      localStorage.setItem('luma_view_mode', viewMode);
+      localStorage.setItem('luma_active_tab', activeTab);
+      if (viewMode === 'app') {
+        window.history.replaceState(null, '', `#/app/${activeTab}`);
+      } else if (viewMode === 'docs') {
+        window.history.replaceState(null, '', '#/docs');
+      } else if (viewMode === 'help') {
+        window.history.replaceState(null, '', '#/help');
+      } else if (viewMode === 'landing') {
+        window.history.replaceState(null, '', window.location.pathname);
+      }
+    } catch {}
+  }, [viewMode, activeTab]);
   const [walletBalanceOkb, setWalletBalanceOkb] = useState<string>('0.00');
   const [walletBalanceUsdg, setWalletBalanceUsdg] = useState<string>('0.00');
   const [walletBalanceUsdt0, setWalletBalanceUsdt0] = useState<string>('0.00');
